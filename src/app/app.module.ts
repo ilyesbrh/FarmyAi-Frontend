@@ -1,3 +1,4 @@
+import { dataEvent } from './Dashboard/time-line/data-event.resolver';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -44,7 +45,7 @@ import { reducers } from './Store';
     SweetAlert2Module.forRoot({customClass:'animated bounceIn'}),
     StoreModule.forRoot(reducers)
   ],
-  providers: [],
+  providers: [dataEvent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

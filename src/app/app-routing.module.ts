@@ -1,3 +1,4 @@
+import { dataEvent } from './Dashboard/time-line/data-event.resolver';
 import { DashHomeComponent } from './Dashboard/dash-home/dash-home.component';
 import { TimeLineComponent } from './Dashboard/time-line/time-line.component';
 import { MainComponent } from './Dashboard/main/main.component';
@@ -9,7 +10,7 @@ const routes: Routes = [
   { path: 'LandingPage', component: LandingPageComponent},
   { path: 'DashBoard', component: MainComponent ,children:[
     {path:'',component:DashHomeComponent},
-    {path:'Timeline',component:TimeLineComponent}
+    {path:'Timeline/:from/:to',component:TimeLineComponent,resolve:{events:dataEvent}}
   ]},
   { path: '**', redirectTo: 'LandingPage', pathMatch: 'full' }
 

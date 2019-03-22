@@ -7,22 +7,22 @@
     <div *ngFor="let item of detections | async" class="cd-timeline__block">
 
 
-      <div class="cd-timeline__img bg-danger">
+      <div class="cd-timeline__img" [ngClass]="{'bg-info': item.seen,'bg-danger notSeen': !item.seen}" (click)="markAsSeen(item.id)" >
         <!-- <img src="img/cd-icon-picture.svg" alt="Picture">  -->
       </div> <!-- cd-timeline__img -->
 
-      <mat-card class="cd-timeline__content animated bounceIn">
+      <mat-card class="cd-timeline__content animated bounceIn " >
         <mat-card-header>
           <mat-card-title-group>
             <mat-card-title>{{item.class}}</mat-card-title>
-            <mat-card-subtitle>id: {{item.iD}}</mat-card-subtitle>
-            <mat-card-subtitle>confidence: {{item.accuracy}}%</mat-card-subtitle>
-            <mat-card-subtitle>camera: {{item.camera}}</mat-card-subtitle>
+            <mat-card-subtitle>id: {{item.id}}</mat-card-subtitle>
+            <mat-card-subtitle>confidence: {{item.confidence}}%</mat-card-subtitle>
+            <mat-card-subtitle>camera: {{item.moduleId}}</mat-card-subtitle>
           </mat-card-title-group>
         </mat-card-header>
         <mat-card-content>
           <img [src]="item.imageURL" class="img-fluid ${rounded-top,rounded-right,rounded-bottom,rounded-left}" alt="">
-          <span class="cd-timeline__date">{{item.timestamp}}</span>
+          <span class="cd-timeline__date">{{item.timestamp | date:'medium'}}</span>
         </mat-card-content>
       </mat-card>
 

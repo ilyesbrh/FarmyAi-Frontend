@@ -1,12 +1,16 @@
 export interface detection {
-    iD: number,
+    id: number,
     timestamp: Date,
     class: string,
-    accuracy: number,
+    confidence: number,
     camera: string,
     imageURL: string,
+    seen:boolean,
     square: any[]
+    moduleId?: null
 }
+
+userId: 1
 export interface CameraStats {
     data: number[],
     label: string

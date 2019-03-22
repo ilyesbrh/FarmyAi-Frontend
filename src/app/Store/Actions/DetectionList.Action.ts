@@ -7,7 +7,8 @@ import { Action } from '@ngrx/store';
 export enum DetectionActionTypes {
     All = '[Detection] All',
     Notification = '[Detection] Notification',
-    Add = '[Detection] Add'
+    Add = '[Detection] Add',
+    MarkSeen = '[Detection] MarkSeen'
 };
 
 /**
@@ -34,6 +35,12 @@ export class Notification implements Action {
     constructor(public payload: detection) { }
 }
 
+export class MarkSeen implements Action {
+    readonly type = DetectionActionTypes.MarkSeen;
+
+    constructor(public payload: number) { }
+}
+
 /**
  * Export a type alias of all actions in this action group
  * so that reducers can easily compose action types
@@ -41,4 +48,5 @@ export class Notification implements Action {
 export type DetectionActions
                         = All
                         | Add
+                        | MarkSeen
                         | Notification;

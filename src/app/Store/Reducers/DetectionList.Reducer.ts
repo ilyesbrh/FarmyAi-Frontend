@@ -9,19 +9,21 @@ export interface State {
 
 const initialState: State = {
     detections: [
-        {
-            iD: 123,
-            timestamp: new Date(1234564),
-            class: "animal",
-            accuracy: 26,
-            camera: "position 2",
-            imageURL: "https://www.elastic.co/assets/blt3541c4519daa9d09/maxresdefault.jpg?uid=blt3541c4519daa9d09",
-            square: [1, 2, 3, 4]
-        }
     ],
     Notification: null
 };
-
+/* 
+{
+    id: 123,
+    timestamp: new Date(1234564),
+    class: "animal",
+    confidence: 26,
+    camera: "position 2",
+    seen:false,
+    imageURL: "https://www.elastic.co/assets/blt3541c4519daa9d09/maxresdefault.jpg?uid=blt3541c4519daa9d09",
+    square: [1, 2, 3, 4]
+} 
+*/
 export function reducer(state = initialState, action: DetectionActions): State {
     switch (action.type) {
         case DetectionActionTypes.All: {
@@ -32,6 +34,16 @@ export function reducer(state = initialState, action: DetectionActions): State {
         }
         case DetectionActionTypes.Add: {
             return { detections: [...state.detections, action.payload], Notification: null }
+        }
+        case DetectionActionTypes.MarkSeen: {
+
+            state.detections.forEach(element => {
+                if(element.id == action.payload ){
+                    element.seen = true;
+                }
+            });
+            
+            return state;
         }
 
         default: {
