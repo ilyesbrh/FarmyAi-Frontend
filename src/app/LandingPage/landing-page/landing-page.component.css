@@ -1,0 +1,84 @@
+.bg-light {
+    background-color: transparent!important;
+}
+
+.navbar {
+    background: rgba(50, 179, 65, 0.49);
+    background: -moz-linear-gradient(-45deg, rgba(50, 179, 65, 0.49) 0%, rgba(17, 17, 17, 0.32) 22%, rgba(43, 43, 43, 0.25) 31%, rgba(64, 64, 64, 0.11) 49%, rgba(76, 76, 76, 0.11) 59%, rgba(102, 102, 102, 0.11) 75%, rgba(89, 89, 89, 0.11) 88%, rgba(76, 76, 76, 0.11) 100%);
+    background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(50, 179, 65, 0.49)), color-stop(22%, rgba(17, 17, 17, 0.32)), color-stop(31%, rgba(43, 43, 43, 0.25)), color-stop(49%, rgba(64, 64, 64, 0.11)), color-stop(59%, rgba(76, 76, 76, 0.11)), color-stop(75%, rgba(102, 102, 102, 0.11)), color-stop(88%, rgba(89, 89, 89, 0.11)), color-stop(100%, rgba(76, 76, 76, 0.11)));
+    background: -webkit-linear-gradient(-45deg, rgba(50, 179, 65, 0.49) 0%, rgba(17, 17, 17, 0.32) 22%, rgba(43, 43, 43, 0.25) 31%, rgba(64, 64, 64, 0.11) 49%, rgba(76, 76, 76, 0.11) 59%, rgba(102, 102, 102, 0.11) 75%, rgba(89, 89, 89, 0.11) 88%, rgba(76, 76, 76, 0.11) 100%);
+    background: -o-linear-gradient(-45deg, rgba(50, 179, 65, 0.49) 0%, rgba(17, 17, 17, 0.32) 22%, rgba(43, 43, 43, 0.25) 31%, rgba(64, 64, 64, 0.11) 49%, rgba(76, 76, 76, 0.11) 59%, rgba(102, 102, 102, 0.11) 75%, rgba(89, 89, 89, 0.11) 88%, rgba(76, 76, 76, 0.11) 100%);
+    background: -ms-linear-gradient(-45deg, rgba(50, 179, 65, 0.49) 0%, rgba(17, 17, 17, 0.32) 22%, rgba(43, 43, 43, 0.25) 31%, rgba(64, 64, 64, 0.11) 49%, rgba(76, 76, 76, 0.11) 59%, rgba(102, 102, 102, 0.11) 75%, rgba(89, 89, 89, 0.11) 88%, rgba(76, 76, 76, 0.11) 100%);
+    background: linear-gradient(135deg, rgba(50, 179, 65, 0.49) 0%, rgba(17, 17, 17, 0.32) 22%, rgba(43, 43, 43, 0.25) 31%, rgba(64, 64, 64, 0.11) 49%, rgba(76, 76, 76, 0.11) 59%, rgba(102, 102, 102, 0.11) 75%, rgba(89, 89, 89, 0.11) 88%, rgba(76, 76, 76, 0.11) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#32b341', endColorstr='#4c4c4c', GradientType=1);
+}
+
+.nav-link:hover {
+    background-color: #01FF7040;
+    box-shadow: 0 4px 20px 0 rgba(0, 0, 0, .14), 0 7px 10px -5px rgb(173, 233, 199);
+    color: #2a5547!important;
+}
+
+.active {
+    border-bottom: 3px solid #01FF70;
+    color: #fff;
+    
+}
+
+.active:hover {
+    border-bottom: none;
+}
+
+.login {
+    border: 2px solid #01FF70;
+    border-radius: 0px;
+}
+
+.login:hover {
+    box-shadow: 0 4px 0px 0 rgba(0, 0, 0, .14), 0 7px 10px -5px #01FF70;
+    border: none;
+}
+
+.navbar-brand {
+    color: whitesmoke!important;
+    font-weight: 700;
+}
+
+.navbar-brand:hover {
+    color: whitesmoke!important;
+    font-weight: 900;
+    scale: 1.2;
+}
+
+.nav-link {
+    line-height: 24px;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 500;
+    min-width: 100px;
+    text-align: center;
+    color: whitesmoke!important;
+    transition: .3s;
+    border-radius: 30px;
+    padding: 10px 15px;
+}
+
+#bg {
+    background-image: url("../../../assets/imgpsh_mobile_save.jpg");
+    background-color: #cccccc;
+    /* Used if the image is unavailable */
+    height: 500px;
+    /* You must set a specified height */
+    background-position: center;
+    /* Center the image */
+    background-repeat: no-repeat;
+    /* Do not repeat the image */
+    background-size: cover;
+    /* Resize the background image to cover the entire container */
+}
+.loginDiv{
+    display: none;
+}
+.slideInUp{
+    display: block;
+}

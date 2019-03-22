@@ -1,0 +1,47 @@
+<header class="shadow-lg">
+  <h1></h1>
+</header>
+
+<section class="cd-timeline ">
+  <div class="cd-timeline__container">
+    <div *ngFor="let item of detections | async" class="cd-timeline__block">
+
+
+      <div class="cd-timeline__img bg-danger">
+        <!-- <img src="img/cd-icon-picture.svg" alt="Picture">  -->
+      </div> <!-- cd-timeline__img -->
+
+      <mat-card class="cd-timeline__content animated bounceIn">
+        <mat-card-header>
+          <mat-card-title-group>
+            <mat-card-title>{{item.class}}</mat-card-title>
+            <mat-card-subtitle>id: {{item.iD}}</mat-card-subtitle>
+            <mat-card-subtitle>confidence: {{item.accuracy}}%</mat-card-subtitle>
+            <mat-card-subtitle>camera: {{item.camera}}</mat-card-subtitle>
+          </mat-card-title-group>
+        </mat-card-header>
+        <mat-card-content>
+          <img [src]="item.imageURL" class="img-fluid ${rounded-top,rounded-right,rounded-bottom,rounded-left}" alt="">
+          <span class="cd-timeline__date">{{item.timestamp}}</span>
+        </mat-card-content>
+      </mat-card>
+
+      <!--original div-->
+      <!-- 
+        <div class="cd-timeline__content animated bounceIn">
+          <h2>type: {{item.class}}</h2>
+          <div class="container ">
+            <div class="shadow-sm col-12">
+            </div>
+            <p class="shadow-sm">camera: {{item.camera}} </p>
+            
+          </div>
+          <span class="cd-timeline__date">{{item.timestamp}}</span>
+        </div> //cd-timeline__content
+      -->
+
+    </div> <!-- cd-timeline__block -->
+  </div>
+</section> <!-- cd-timeline -->
+<mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10]" style="height: 10%">
+</mat-paginator>

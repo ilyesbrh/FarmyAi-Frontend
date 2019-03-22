@@ -1,0 +1,99 @@
+<div class="container pt-5 mt-sm-5 mt-md-0">
+    <div class="row">
+        <div class="col-3"></div>
+        <div class="col-3"></div>
+        <div class="col-3"></div>
+        <div class="col-3"></div>
+    </div>
+    <div class="row">
+        <div class="col-lg-3 col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <div class="stat-widget-five">
+                        <div class="stat-icon dib flat-color-1">
+                            <img src="https://api.adorable.io/avatars/110/iliesbrh" class="img-fluid rounded-circle"
+                                alt="" style="width: 60%">
+                        </div>
+                        <div class="stat-content">
+                            <div class="text-left dib">
+                                <div class="stat-text">49</div>
+                                <div class="stat-heading">panda</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <div class="stat-widget-five">
+                        <div class="stat-icon dib flat-color-2">
+                            <img src="https://api.adorable.io/avatars/110/iliesbrh" class="img-fluid rounded-circle"
+                                alt="" style="width: 60%">
+                        </div>
+                        <div class="stat-content">
+                            <div class="text-left dib">
+                                <div class="stat-text">49</div>
+                                <div class="stat-heading">panda</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <div class="stat-widget-five">
+                        <div class="stat-icon dib flat-color-3">
+                            <img src="https://api.adorable.io/avatars/110/iliesbrh" class="img-fluid rounded-circle"
+                                alt="" style="width: 60%">
+                        </div>
+                        <div class="stat-content">
+                            <div class="text-left dib">
+                                <div class="stat-text">49</div>
+                                <div class="stat-heading">panda</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <div class="stat-widget-five">
+                        <div class="stat-icon dib flat-color-4">
+                            <img src="https://api.adorable.io/avatars/110/iliesbrh" class="img-fluid rounded-circle"
+                                alt="" style="width: 60%">
+                        </div>
+                        <div class="stat-content">
+                            <div class="text-left dib">
+                                <div class="stat-text">49</div>
+                                <div class="stat-heading">panda</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- chart -->
+    <div class="col-lg-12 p-0 m-0">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="box-title">camera</h4>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card-body">
+                        <canvas baseChart [datasets]="barChartData | async" [labels]="barChartLabels | async"
+                            [options]="barChartOptions | async" [legend]="barChartLegend | async" [chartType]="barChartType | async"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body"></div>
+        </div>
+    </div>
+</div>
