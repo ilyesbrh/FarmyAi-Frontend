@@ -5,6 +5,8 @@ import { Store } from '@ngrx/store';
 import * as fromStore from '../../Store/index';
 import { Observable } from 'rxjs';
 import { DomSanitizer } from '@angular/platform-browser';
+import { PageEvent } from '@angular/material';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -14,20 +16,36 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class TimeLineComponent implements OnInit {
 
-  
+  eventsLength:number;
   detections: Observable<detection[]>;
-
-  constructor(public store:Store<fromStore.State>,public api:ApiInterfaceService,private sanitizer: DomSanitizer) {}
+  constructor(public store: Store<fromStore.State>, public api: ApiInterfaceService, 
+    private sanitizer: DomSanitizer, public router: Router) { }
 
   ngOnInit() {
 
+    this.api.getEventCount().subscribe(val=>{
+      this.eventsLength=val;
+      console.log('count is '+val);
+      
+      
+    }
+      );
     this.detections = this.store.select(fromStore.getDetections);
   }
-  markAsSeen(eventId:number){
+  markAsSeen(eventId: number) {
 
     this.api.MarkAsSeen(eventId);
   }
-  bypassImageUrl(url:string){
+  bypassImageUrl(url: string) {
     return this.sanitizer.bypassSecurityTrustUrl(url);
+  }
+  pageEvent(pageEvent: PageEvent) {
+
+    let index = pageEvent.pageIndex + 1;
+    let size = pageEvent.pageSize;
+    let current = size * index;
+    console.log(current);
+    this.router.navigate(['/DashBoard/Timeline/'+(current-size)+'/'+size]);
+    
   }
 }

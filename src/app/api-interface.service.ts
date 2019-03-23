@@ -1,4 +1,4 @@
-import { Add, MarkSeen } from './Store/Actions/DetectionList.Action';
+import { Add, MarkSeen, All } from './Store/Actions/DetectionList.Action';
 import { State } from './Store/index';
 import { User, detection } from './Store/model';
 import { Router } from '@angular/router';
@@ -12,6 +12,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ApiInterfaceService {
+  
   
 
   baseURL = 'http://localhost:3000/'
@@ -37,7 +38,7 @@ export class ApiInterfaceService {
 
       console.log(value);
 
-      value.forEach((val: detection) => this.store.dispatch(new Add(val)));
+      this.store.dispatch(new All(value));
 
     });
 
@@ -61,6 +62,9 @@ export class ApiInterfaceService {
   getAnimals():Observable<any[]>{
 
     return this.http.get<any[]>(this.baseURL+'event/animals/'+this.id);
+  }
+  getEventCount(): any {
+    return this.http.get<number>(this.baseURL+'event/count/'+this.id);
   }
 
   login(username: string, password: string) {

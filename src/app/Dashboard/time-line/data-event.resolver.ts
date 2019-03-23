@@ -23,4 +23,5 @@ export class dataEvent implements Resolve<detection[]> {
         this.api.events(offset,limit);
         return null;
     }
+    
 }
