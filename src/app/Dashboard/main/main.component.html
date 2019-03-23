@@ -54,7 +54,7 @@
             </mat-divider>
             <mat-card-content id="contentScroll" class=" py-2 container-fluid m-0">
 
-              <div class="row" align="center">
+              <div *ngFor="let Notification of Notifications | async" class="row" align="center">
                 <button mat-raised-button class="mb-1" [style.width]="'100%'">
                   <span>animal | Position1</span>
                   <label style="color: chartreuse;font-size: 15px"> 56m</label>
@@ -74,6 +74,7 @@
 
 
         <button mat-icon-button [mdePopoverTriggerFor]="appPopover" mdePopoverTriggerOn="click" class="mr-2">
+
           <mat-icon matBadge="15" matBadgeColor="warn">notifications</mat-icon>
         </button>
 
@@ -104,7 +105,7 @@
         <ng-container *swalPartial="swalTargets.actions">
           <button mat-button (click)="SwalPopup.nativeSwal.close()">Close</button>
           <button mat-raised-button color="primary" class="ml-5" (click)="SwalPopup.nativeSwal.close()"
-            [routerLink]="['/DashBoard/Timeline']">more details</button>
+          [routerLink]="['/DashBoard/Timeline/0/10']">more details</button>
         </ng-container>
       </swal>
       <router-outlet></router-outlet>

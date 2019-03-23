@@ -53,4 +53,9 @@ export function reducer(state = initialState, action: DetectionActions): State {
 }
 
 export const getDetections = (state: State) => state.detections;
+export const getUnseen = (state: State) => state.detections.filter(isSeen);
 export const getNotification = (state: State) => state.Notification;
+function isSeen(element:detection, index, array) { 
+   return !element.seen ; 
+} 
+

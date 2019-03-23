@@ -19,6 +19,7 @@ export const reducers: ActionReducerMap<State> = {
 
 export const selectDetection = createFeatureSelector<detection.State>('Detection');
 export const getDetections = createSelector(selectDetection, detection.getDetections);
+export const getUnseen = createSelector(selectDetection, detection.getUnseen);
 export const getNotification = createSelector(selectDetection, detection.getNotification);
 
 export const selectStats = createFeatureSelector<Stats.State>('Statistics');
