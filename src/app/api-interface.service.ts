@@ -16,6 +16,7 @@ export class ApiInterfaceService {
 
   baseURL = 'http://localhost:3000/'
   id: Number;
+  animal_id: any;
 
   constructor(public http: HttpClient, public router: Router, public store: Store<State>, ) {
     this.id = new Number(localStorage.getItem("id"));
@@ -29,6 +30,8 @@ export class ApiInterfaceService {
     params = params.append('id', this.id.toString());
     params = params.append('offset', offset);
     params = params.append('limit', limit);
+
+
 
     this.http.get(this.baseURL + 'event', { params: params }).subscribe((value: []) => {
 
@@ -53,6 +56,11 @@ export class ApiInterfaceService {
   }
   getLiveUpdate():Observable<any>{
     return this.http.get(this.baseURL+'event/notification/'+this.id);
+  }
+
+  getAnimals():Observable<any[]>{
+
+    return this.http.get<any[]>(this.baseURL+'event/animals/'+this.id);
   }
 
   login(username: string, password: string) {
