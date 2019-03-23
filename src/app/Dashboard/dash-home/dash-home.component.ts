@@ -30,6 +30,7 @@ export class DashHomeComponent implements OnInit {
     this.barChartType = this.store.select(fromStore.getType);
     this.barChartLegend = this.store.select(fromStore.getLegend);
     this.barChartData = this.store.select(fromStore.getData);
+    this.store.select(fromStore.getData).subscribe(val=>console.log('data : '+val));
     
     this.animalsStats = this.api.getAnimals();
     

@@ -30,7 +30,7 @@ export class addCameraStat implements Action {
 export class updateAnimalsStats implements Action {
     readonly type = StatsActionTypes.updateAnimalsStats;
 
-    constructor(public payload: AnimalStat[]) { }
+    constructor(public payload: number[]) { }
 }
 
 /**
@@ -41,3 +41,4 @@ export type StatsActions
                         = updateLabel
                         | addCameraStat
                         | updateAnimalsStats;
+                        

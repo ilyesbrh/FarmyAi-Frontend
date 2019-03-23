@@ -19,22 +19,25 @@ const initialState: State = {
         scaleShowVerticalLines: false,
         responsive: true
     },
-    barChartLabels: ['2006', '2007', '2008', '2009', '2010', '2011', '2012'],
-    barChartData : [{data: [28, 48, 40, 19, 86, 27, 90], label: 'position A'},{data: [28, 48, 40, 19, 86, 27, 90], label: 'position B'}],
-    barChartType: 'line',
+    barChartLabels: [], // x's
+    barChartData : [{data: [1,20,122], label: 'model'}],// Y's
+    barChartType: 'line',//type de chart  exmple : bar line etc..
     barChartLegend: true
 };
 
 export function reducer(state = initialState, action: StatsActions): State {
     switch (action.type) {
         case StatsActionTypes.addCameraStat: {
-            
+            return state;
         }
         case StatsActionTypes.updateAnimalsStats: {
-            
+            let model :CameraStats = {data:action.payload,label:state.barChartData[0].label};
+            state.barChartData = [model];
+            return state;
         }
         case StatsActionTypes.updateLabel: {
-            
+            state.barChartLabels = action.payload;
+            return state;
         }
 
         default: {

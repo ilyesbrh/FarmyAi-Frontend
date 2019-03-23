@@ -42,6 +42,7 @@ export class MainComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
 
+    this.api.Allevents();
     interval(10 * 1000).subscribe(data => {
       this.api.getLiveUpdate().subscribe(val =>{
         if(val[0]){

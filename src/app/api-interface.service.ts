@@ -6,14 +6,15 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
+import { updateLabel, addCameraStat, updateAnimalsStats } from './Store/Actions/Statistics.Action';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiInterfaceService {
-  
-  
+
+
 
   baseURL = 'http://localhost:3000/'
   id: Number;
@@ -21,7 +22,7 @@ export class ApiInterfaceService {
 
   constructor(public http: HttpClient, public router: Router, public store: Store<State>, ) {
     this.id = new Number(localStorage.getItem("id"));
-   }
+  }
 
   events(offset: string, limit: string): null {
 
@@ -44,10 +45,46 @@ export class ApiInterfaceService {
 
     return null;
   }
+  getHour(element):number{
+    console.log(new Date(element).getHours());
+    return new Date(element).getHours();
+  }
+  Allevents(): null {
+
+    console.log('event works');
+
+    var Xs = <any>[];
+    for (let index = 0; index < 24; index++) {
+      Xs.push(index);
+    }
+    this.store.dispatch(new updateLabel(Xs))
+
+    this.http.get(this.baseURL + 'event/All/' + this.id).subscribe((value: any[]) => {
+
+      let val : number[]= [];
+      for (let index = 0; index < 24; index++) {
+        val.push(0);
+      }
+      
+      value.forEach(element => {
+        let hour = this.getHour(element.timestamp);
+        val[hour] = val[hour] + 1;
+      });
+
+      console.log(val);
+      
+      
+      this.store.dispatch(new updateAnimalsStats(val));
+      //this.store.dispatch(new All(value));
+
+    });
+
+    return null;
+  }
 
   MarkAsSeen(eventId: number): any {
-    
-    this.http.patch(this.baseURL + 'event/markSeen/' + eventId, { }).subscribe(
+
+    this.http.patch(this.baseURL + 'event/markSeen/' + eventId, {}).subscribe(
       (response) => {
         this.store.dispatch(new MarkSeen(eventId));
       },
@@ -55,16 +92,16 @@ export class ApiInterfaceService {
     );
 
   }
-  getLiveUpdate():Observable<any>{
-    return this.http.get(this.baseURL+'event/notification/'+this.id);
+  getLiveUpdate(): Observable<any> {
+    return this.http.get(this.baseURL + 'event/notification/' + this.id);
   }
 
-  getAnimals():Observable<any[]>{
+  getAnimals(): Observable<any[]> {
 
-    return this.http.get<any[]>(this.baseURL+'event/animals/'+this.id);
+    return this.http.get<any[]>(this.baseURL + 'event/animals/' + this.id);
   }
   getEventCount(): any {
-    return this.http.get<number>(this.baseURL+'event/count/'+this.id);
+    return this.http.get<number>(this.baseURL + 'event/count/' + this.id);
   }
 
   login(username: string, password: string) {
@@ -77,7 +114,7 @@ export class ApiInterfaceService {
       (response: User) => {
         if (response.id) {
           this.id = response.id;
-          localStorage.setItem("id",this.id.toString());
+          localStorage.setItem("id", this.id.toString());
           this.router.navigate(['/DashBoard']);
         }
       },
