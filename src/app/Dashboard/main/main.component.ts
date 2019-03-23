@@ -42,11 +42,13 @@ export class MainComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
 
-    interval(60 * 1000).subscribe(data => {
+    interval(10 * 1000).subscribe(data => {
       this.api.getLiveUpdate().subscribe(val =>{
         if(val[0]){
-          this.SwalPopup.title = val.class+' Detected';
-          this.SwalPopup.text = 'accuracy '+val.confidence+'%';
+          console.log(val[0]);
+          
+          this.SwalPopup.title = val[0].class+' Detected';
+          this.SwalPopup.text = val[0].confidence+'%';
           this.SwalPopup.show();
         }
       })
