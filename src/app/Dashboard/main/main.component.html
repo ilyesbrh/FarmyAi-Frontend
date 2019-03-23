@@ -54,10 +54,11 @@
             </mat-divider>
             <mat-card-content id="contentScroll" class=" py-2 container-fluid m-0">
 
-              <div *ngFor="let Notification of Notifications | async" class="row" align="center">
+              <div *ngFor="let Notification of Undiscovered | async" class="row" align="center">
                 <button mat-raised-button class="mb-1" [style.width]="'100%'">
-                  <span>animal | Position1</span>
-                  <label style="color: chartreuse;font-size: 15px"> 56m</label>
+                  <span>{{Notification.class}} </span>
+                  <label style="color: chartreuse;font-size: 15px"> {{Notification.timestamp | date:'mm'}}</label>
+
                 </button>
               </div>
 
@@ -75,7 +76,8 @@
 
         <button mat-icon-button [mdePopoverTriggerFor]="appPopover" mdePopoverTriggerOn="click" class="mr-2">
 
-          <mat-icon matBadge="15" matBadgeColor="warn">notifications</mat-icon>
+          <mat-icon [matBadge]="(Undiscovered | async).length" matBadgeColor="warn">notifications</mat-icon>
+          
         </button>
 
         <button mat-button [matMenuTriggerFor]="ProfileMenu" class="mr-1 btnStyle" style="font-size: 24px;">

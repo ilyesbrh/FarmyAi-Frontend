@@ -1,10 +1,11 @@
 import { Component, OnInit, ChangeDetectorRef, OnDestroy, ViewChild } from '@angular/core';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { SwalPartialTargets, SwalComponent } from '@toverux/ngx-sweetalert2';
-import { State,getDetections } from '../../Store/index';
+import { State,getDetections,getUnseen } from '../../Store/index';
 import { Store } from '@ngrx/store';
 import { detection } from 'src/app/Store/model';
 import { Observable } from 'rxjs/internal/Observable';
+
 
 @Component({
   selector: 'app-main',
@@ -20,7 +21,8 @@ export class MainComponent implements OnInit, OnDestroy {
   public profileURL = "https://api.adorable.io/avatars/110/iliesbrh";
 
   private _mobileQueryListener: () => void;
-  Notification: Observable<detection[]>;
+  Notifications: Observable<detection[]>;
+  Undiscovered: Observable<detection[]>;
 
   constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher,
      public readonly swalTargets: SwalPartialTargets,public store:Store<State>) {
@@ -36,16 +38,19 @@ export class MainComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     
-    /* setTimeout(() => {
+     setTimeout(() => {
     this.SwalPopup.show();
-    }, 3000); */
+    }, 3000); 
 
     
-    this.Notification = this.store.select<detection[]>(getDetections);
-    this.store.select<detection[]>(getDetections).subscribe((val)=>{
+    this.Notifications = this.store.select<detection[]>(getDetections);
+    this.Undiscovered = this.store.select<detection[]>(getUnseen);
+    this.store.select<detection[]>(getUnseen).subscribe((val)=>{
       console.log(val);
     });
     
+
+  
   }
   
   ngAfterViewInit(): void {
