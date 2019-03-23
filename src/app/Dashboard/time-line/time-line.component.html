@@ -21,7 +21,7 @@
           </mat-card-title-group>
         </mat-card-header>
         <mat-card-content>
-          <img [src]="item.imageURL" class="img-fluid ${rounded-top,rounded-right,rounded-bottom,rounded-left}" alt="">
+          <img [src]="bypassImageUrl('http://localhost:3000/'+item.imageURL)" class="img-fluid ${rounded-top,rounded-right,rounded-bottom,rounded-left}" alt="">
           <span class="cd-timeline__date">{{item.timestamp | date:'medium'}}</span>
         </mat-card-content>
       </mat-card>

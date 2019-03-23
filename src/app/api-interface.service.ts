@@ -13,9 +13,11 @@ export class ApiInterfaceService {
   
 
   baseURL = 'http://localhost:3000/'
-  id: number;
+  id: Number;
 
-  constructor(public http: HttpClient, public router: Router, public store: Store<State>, ) { }
+  constructor(public http: HttpClient, public router: Router, public store: Store<State>, ) {
+    this.id = new Number(localStorage.getItem("id"));
+   }
 
   events(offset: string, limit: string): null {
 
@@ -58,6 +60,7 @@ export class ApiInterfaceService {
       (response: User) => {
         if (response.id) {
           this.id = response.id;
+          localStorage.setItem("id",this.id.toString());
           this.router.navigate(['/DashBoard']);
         }
       },
