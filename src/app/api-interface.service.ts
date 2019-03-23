@@ -5,6 +5,8 @@ import { Router } from '@angular/router';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root'
@@ -49,6 +51,9 @@ export class ApiInterfaceService {
     );
 
   }
+  getLiveUpdate():Observable<any>{
+    return this.http.get(this.baseURL+'event/notification/'+this.id);
+  }
 
   login(username: string, password: string) {
 
@@ -69,3 +74,4 @@ export class ApiInterfaceService {
 
   }
 }
+

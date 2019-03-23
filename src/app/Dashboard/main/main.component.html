@@ -102,7 +102,7 @@
           </button>
         </mat-menu>
       </mat-toolbar>
-      <swal #SwalPopup title="Animale Detected" text="accuracy (xx%)" type="warning" [buttonsStyling]="false"
+      <swal #SwalPopup title="{{popup?.animal}} Detected" text="accuracy ({{popup?.accuracy}}%)" type="warning" [buttonsStyling]="false"
         [showCancelButton]="true" [focusCancel]="true" [animation]="false" (confirm)="goToHistory($event)">
         <ng-container *swalPartial="swalTargets.actions">
           <button mat-button (click)="SwalPopup.nativeSwal.close()">Close</button>
