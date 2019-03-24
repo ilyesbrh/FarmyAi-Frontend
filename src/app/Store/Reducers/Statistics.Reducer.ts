@@ -20,7 +20,7 @@ const initialState: State = {
         responsive: true
     },
     barChartLabels: [], // x's
-    barChartData : [{data: [1,20,122], label: 'model'}],// Y's
+    barChartData : [{data: [20,10,50,5,2,30,20,10,50,5,2,30,20,10,50,5,2,30,20,10,50,5,2,30], label: 'model'}],// Y's
     barChartType: 'line',//type de chart  exmple : bar line etc..
     barChartLegend: true
 };
@@ -31,8 +31,7 @@ export function reducer(state = initialState, action: StatsActions): State {
             return state;
         }
         case StatsActionTypes.updateAnimalsStats: {
-            let model :CameraStats = {data:action.payload,label:state.barChartData[0].label};
-            state.barChartData = [model];
+            state.barChartData[0].data = action.payload;
             return state;
         }
         case StatsActionTypes.updateLabel: {

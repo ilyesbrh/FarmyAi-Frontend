@@ -1,7 +1,7 @@
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light shadow fixed-top">
   <div class="container-fluid px-4">
-    <a class="navbar-brand" href="#"><h2>Farmy.ai</h2></a>
+    <a class="navbar-brand" href="#"> <img src="../../../assets/Logo.png" class="img-fluid" style="width:15%; height:20%;"></a>
     <button #menuToggle class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
       aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -12,6 +12,7 @@
           <a class="nav-link" href="#">Home
             <span class="sr-only">(current)</span>
           </a>
+          
         </li>
         <li class="nav-item ml-2">
           <a class="nav-link" href="#">About</a>
@@ -34,6 +35,7 @@
 </nav>
 <div id="bg" style="height: 100vh ; width: 100%; ">
     <div class="container h-100">
+      
       <div class="row h-100 align-items-center">
         <app-login [ngClass]="{'animated slideInUp': loginToggle}" class="loginDiv col-12 mt-5">
         </app-login>
